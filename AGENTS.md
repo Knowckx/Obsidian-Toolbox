@@ -1,5 +1,7 @@
 # Obsidian community plugin
 
+> 开始工作前请先阅读 [功能状态清单](.ai.doc/功能状态清单.md)，了解当前架构、功能进度和已知问题。
+
 ## Project overview
 
 - Target: Obsidian Community Plugin (TypeScript → bundled JavaScript).

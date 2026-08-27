@@ -1,92 +1,106 @@
-# Obsidian Sample Plugin
+# Obsidian Toolbox
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+Obsidian Toolbox is a collection of small, local-first editing tools for Obsidian.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## Features
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
+### Clean paste
 
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and outputs a Notice on click.
-- Registers a global interval which logs 'setInterval' to the console.
+Use **Clean paste** to read clipboard content, convert HTML to Markdown when available, normalize Markdown whitespace, and insert the result at the current selection.
 
-## First time developing plugins?
+- Command ID: `clean-paste`
+- Default hotkey: `Mod+Shift+V`
+- Ordinary paste is not intercepted.
+- Markdown fenced code blocks and structural formatting are preserved.
 
-Quick starting guide for new plugin devs:
+HTML-specific cleanup rules are not implemented yet; HTML is currently passed directly to Obsidian's Markdown converter.
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS and pnpm, then run `pnpm install` in the command line under your repo folder.
-- Run `pnpm dev` to compile your plugin from `src/main.ts` to `main.js`.
-- Make changes to `src/main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `pnpm update` in the command line under your repo folder.
+### Transpose Markdown table
 
-## Releasing new releases
+Place the cursor inside a Markdown table and run **Transpose Markdown table**. The plugin locates the complete table, transposes its entire cell matrix, and replaces it in place.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
-
-> You can simplify the version bump process by running `pnpm version patch`, `pnpm version minor` or `pnpm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- Make sure your NodeJS is at least v18 (`node --version`).
-- `pnpm install` to install dependencies.
-- `pnpm dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint
-
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code.
-- This project already has eslint preconfigured, you can invoke a check by running `pnpm lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-	"fundingUrl": "https://buymeacoffee.com"
-}
+```text
+M rows × N columns → N rows × M columns
 ```
 
-If you have multiple URLs, you can also do:
+The Markdown separator row is syntax rather than table data. It is removed before the transpose and regenerated afterward. Column alignment is reset to the neutral `---` form because the original column alignment cannot be mapped unambiguously after transposition.
 
-```json
-{
-	"fundingUrl": {
-		"Buy Me a Coffee": "https://buymeacoffee.com",
-		"GitHub Sponsor": "https://github.com/sponsors",
-		"Patreon": "https://www.patreon.com/"
-	}
-}
+- Command ID: `transpose-markdown-table`
+- Default hotkey: none
+- Supported in source mode and Live Preview.
+- Unescaped `|` characters delimit cells; use `\|` for a pipe inside a cell.
+- Missing cells in irregular data rows are padded with empty cells.
+
+Example:
+
+```markdown
+| A | B | C |
+| --- | --- | --- |
+| 1 | 2 | 3 |
+| 4 | 5 | 6 |
 ```
 
-## API Documentation
+becomes:
 
-See https://docs.obsidian.md
+```markdown
+| A | 1 | 4 |
+| --- | --- | --- |
+| B | 2 | 5 |
+| C | 3 | 6 |
+```
+
+### Hello World
+
+The **Show hello message** command displays a simple Obsidian Notice. It is retained as a minimal feature-module example.
+
+## Development
+
+Requirements:
+
+- Node.js 18 or later
+- pnpm 11.24.0
+
+Install dependencies:
+
+```powershell
+pnpm install --frozen-lockfile
+```
+
+Start the watch build:
+
+```powershell
+pnpm dev
+```
+
+Create a production build:
+
+```powershell
+pnpm build
+```
+
+Run lint checks:
+
+```powershell
+pnpm lint
+```
+
+The production bundle is generated as `main.js` in the project root.
+
+## Manual installation
+
+Copy the release artifacts into your vault:
+
+```text
+<Vault>/.obsidian/plugins/obsidian-toolbox/
+├─ main.js
+├─ manifest.json
+└─ styles.css  (if present)
+```
+
+Reload Obsidian, then enable the plugin under **Settings → Community plugins**.
+
+## Privacy
+
+The plugin operates locally. It does not include telemetry or transmit vault content to external services.
+
+See [the feature status checklist](.ai.doc/功能状态清单.md) for implementation progress and known issues.

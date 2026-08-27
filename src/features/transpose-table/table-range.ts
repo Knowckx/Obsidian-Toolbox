@@ -10,15 +10,7 @@ export function findMarkdownTableAtLine(
 	lines: readonly string[],
 	cursorLine: number,
 ): MarkdownTableRange | null {
-	for (const candidateLine of [cursorLine, cursorLine - 1, cursorLine + 1]) {
-		const tableRange = findMarkdownTableContainingLine(lines, candidateLine);
-
-		if (tableRange !== null) {
-			return tableRange;
-		}
-	}
-
-	return null;
+	return findMarkdownTableContainingLine(lines, cursorLine);
 }
 
 function findMarkdownTableContainingLine(
