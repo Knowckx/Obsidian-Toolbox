@@ -9,12 +9,6 @@ export function registerCleanPasteCommand(plugin: Plugin): void {
 	plugin.addCommand({
 		id: CLEAN_PASTE_COMMAND_ID,
 		name: 'Clean paste',
-		hotkeys: [
-			{
-				modifiers: ['Mod', 'Shift'],
-				key: 'V',
-			},
-		],
 		editorCallback: async (editor) => executeCleanPaste(editor),
 	});
 }

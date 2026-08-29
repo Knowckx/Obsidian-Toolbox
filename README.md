@@ -9,7 +9,7 @@ Obsidian Toolbox is a collection of small, local-first editing tools for Obsidia
 Use **Clean paste** to read clipboard content, convert HTML to Markdown when available, normalize Markdown whitespace, and insert the result at the current selection.
 
 - Command ID: `clean-paste`
-- Default hotkey: `Mod+Shift+V`
+- No default hotkey is assigned; assign one in **Settings → Hotkeys** if needed.
 - Ordinary paste is not intercepted.
 - Markdown fenced code blocks and structural formatting are preserved.
 
@@ -57,7 +57,7 @@ The **Show hello message** command displays a simple Obsidian Notice. It is reta
 
 Requirements:
 
-- Node.js 18 or later
+- Node.js 22.13 or later
 - pnpm 11.24.0
 
 Install dependencies:
