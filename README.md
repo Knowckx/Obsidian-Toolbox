@@ -1,6 +1,6 @@
-# Obsidian Toolbox
+# OB Toolbox
 
-Obsidian Toolbox is a collection of small, local-first editing tools for Obsidian.
+OB Toolbox is a collection of small, local-first editing tools for Obsidian.
 
 ## Features
 
@@ -91,7 +91,7 @@ The production bundle is generated as `main.js` in the project root.
 Copy the release artifacts into your vault:
 
 ```text
-<Vault>/.obsidian/plugins/obsidian-toolbox/
+<Vault>/.obsidian/plugins/ob-toolbox/
 ├─ main.js
 ├─ manifest.json
 └─ styles.css  (if present)

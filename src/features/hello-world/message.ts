@@ -1,1 +1,1 @@
-export const HELLO_MESSAGE = 'Hello, Obsidian Toolbox!';
+export const HELLO_MESSAGE = 'Hello, OB Toolbox!';

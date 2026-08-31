@@ -1,6 +1,6 @@
 {
-	"id": "obsidian-toolbox",
-	"name": "Obsidian-Toolbox",
+	"id": "ob-toolbox",
+	"name": "OB Toolbox",
 	"version": "1.0.0",
 	"minAppVersion": "1.0.0",
 	"description": "A toolbox plugin for Obsidian.",
