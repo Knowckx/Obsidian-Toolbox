@@ -1,6 +1,6 @@
-# OB Toolbox
+# MD Toolbox
 
-OB Toolbox provides a local-first Markdown table transpose command for Obsidian.
+MD Toolbox provides a local-first Markdown table transpose command for Obsidian.
 
 ## Transpose Markdown table
 

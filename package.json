@@ -1,6 +1,6 @@
 {
 	"name": "ob-toolbox",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Transpose Markdown tables directly in the editor.",
 	"main": "main.js",
 	"type": "module",

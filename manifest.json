@@ -1,7 +1,7 @@
 {
 	"id": "ob-toolbox",
-	"name": "OB Toolbox",
-	"version": "1.0.0",
+	"name": "MD Toolbox",
+	"version": "1.0.1",
 	"minAppVersion": "1.12.7",
 	"description": "Transpose Markdown tables directly in the editor.",
 	"author": "knowckx",
