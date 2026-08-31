@@ -2,8 +2,8 @@
 	"id": "ob-toolbox",
 	"name": "OB Toolbox",
 	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
-	"description": "A toolbox plugin for Obsidian.",
+	"minAppVersion": "1.12.7",
+	"description": "Transpose Markdown tables directly in the editor.",
 	"author": "knowckx",
 	"isDesktopOnly": false
 }

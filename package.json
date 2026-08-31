@@ -1,7 +1,7 @@
 {
 	"name": "ob-toolbox",
 	"version": "1.0.0",
-	"description": "A collection of small, local-first editing tools for Obsidian.",
+	"description": "Transpose Markdown tables directly in the editor.",
 	"main": "main.js",
 	"type": "module",
 	"packageManager": "pnpm@11.24.0",
