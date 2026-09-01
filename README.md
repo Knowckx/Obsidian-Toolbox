@@ -29,7 +29,14 @@ The command works in source mode and Live Preview. After transposition, column a
 
 ## Manual installation
 
-Copy the plugin's `main.js` and `manifest.json` into:
+Install dependencies and build the plugin:
+
+```text
+pnpm install
+pnpm build
+```
+
+Then copy the generated `main.js` and `manifest.json` into:
 
 ```text
 <Vault>/.obsidian/plugins/ob-toolbox/
